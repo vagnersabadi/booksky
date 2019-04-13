@@ -1,3 +1,4 @@
+import 'package:booksky/home/book_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,9 +19,10 @@ class HomePageState extends State<HomePage> {
     "PHP"
   ];
 
+  List<String> tmp = [];
+
   int _selectedIndex = 0;
 
-  
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIOverlays([]);
@@ -46,12 +48,13 @@ class HomePageState extends State<HomePage> {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Text("Recommended",
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[400]
-                ),)
+                Text(
+                  "Recommended",
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[400]),
+                )
               ],
             ),
             Container(
@@ -65,28 +68,34 @@ class HomePageState extends State<HomePage> {
                   return Padding(
                     padding: const EdgeInsets.only(left: 6, right: 6),
                     child: GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         _selectedIndex = index;
-                        setState((){});
+                        setState(() {});
                       },
                       child: Chip(
-                        padding: EdgeInsets.only(
-                          left: 8,
-                          right: 8
-                        ),
+                        padding: EdgeInsets.only(left: 8, right: 8),
                         backgroundColor: index == _selectedIndex
                             ? Colors.blue
                             : Colors.grey[200],
-                        label: Text(categorias.elementAt(index),
-                        style: TextStyle(
-                          color: index == _selectedIndex ? Colors.white : Colors.grey[500]
-                        ),
+                        label: Text(
+                          categorias.elementAt(index),
+                          style: TextStyle(
+                              color: index == _selectedIndex
+                                  ? Colors.white
+                                  : Colors.grey[500]),
                         ),
                       ),
                     ),
                   );
                 },
               ),
+            ),
+            ListView.builder(
+              itemCount: categorias.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                return BookWidget();
+              },
             )
           ],
         ),
