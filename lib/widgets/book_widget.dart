@@ -14,7 +14,10 @@ class BookWidget extends StatelessWidget {
         children: <Widget>[
           Align(
             alignment: Alignment.centerRight,
-            child: Container(
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular(12)
+              ),
               child: Image.network(
                 imageURl,
                 fit: BoxFit.fill,
