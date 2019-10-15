@@ -26,4 +26,10 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
        
     }
   }
+
+  @override
+  Stream<HomePageState> mapEventToState(HomePageEvent event) {
+    // TODO: implement mapEventToState
+    return null;
+  }
 }
