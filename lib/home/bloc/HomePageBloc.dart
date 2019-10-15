@@ -15,7 +15,7 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
   HomePageState get initialState => HomePageStateLoading();
 
   @override
-  Stream<HomePageState> mapEeventToState(HomePageEvent event) async*{
+  Stream<HomePageState> mapEventToState(HomePageEvent event) async*{
     if (event is HomePageEventSearch) {
       yield HomePageStateLoading();
       
@@ -27,9 +27,5 @@ class HomePageBloc extends Bloc<HomePageEvent, HomePageState> {
     }
   }
 
-  @override
-  Stream<HomePageState> mapEventToState(HomePageEvent event) {
-    // TODO: implement mapEventToState
-    return null;
-  }
+  
 }

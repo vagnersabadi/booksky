@@ -17,7 +17,7 @@ class Repository {
       var jsonData = converter.jsonDecode(body);
       var data = BooksApiModel.fromJson(jsonData);
       var books = data.items;
-      return HomePageStateSuccess(books: data.items);
+      return HomePageStateSuccess(books: books);
     } else {
       return HomePageStateError(message: "Falha na conexão");
     }
