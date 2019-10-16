@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:booksky/home/bloc/home_pages_state.dart';
 import 'package:booksky/models.dart';
-import 'package:booksky/home/bloc/HomePageState.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as converter;
 
