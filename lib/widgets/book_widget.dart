@@ -1,8 +1,19 @@
+import 'package:booksy/models/books_api_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class BookWidget extends StatelessWidget {
-  String imageURl =
-      "https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80";
+
+  final Book book;
+  VolumeInfo get _bookInfo => book.volumeInfo;
+
+  final String imageUrl = "https://images.unsplash.com/photo-1535498730771-e735b998cd64?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80";
+
+  const BookWidget({
+    Key key,
+    @required this.book
+  }) : assert(book != null),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +25,21 @@ class BookWidget extends StatelessWidget {
         children: <Widget>[
           Align(
             alignment: Alignment.centerRight,
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(
-                Radius.circular(12)
-              ),
-              child: Image.network(
-                imageURl,
-                fit: BoxFit.fill,
-                width: 200,
+            child: Container(
+              width: 200,
+              decoration: BoxDecoration(
+                border: Border.all(width: 0.5),
+                  borderRadius: BorderRadius.all(
+                  Radius.circular(12)
+                  ),
+                image: DecorationImage(
+                  fit: BoxFit.fill,
+                  image: NetworkImage(_bookInfo.imageLinks.smallThumbnail)
+                )
               ),
             ),
           ),
+
           Align(
             alignment: Alignment.centerLeft,
             child: Container(
@@ -32,31 +47,37 @@ class BookWidget extends StatelessWidget {
               height: 200,
               padding: EdgeInsets.all(24),
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
-                  boxShadow: [
-                    BoxShadow(color: Colors.black12, blurRadius: 10)
-                  ]),
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(16)
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 15
+                  )
+                ]
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Text(
-                    "Book Title",
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "book author",
+                  Text(_bookInfo.title,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: Colors.grey,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  Text(_bookInfo.authors[0],
+                    style: TextStyle(
+                      color: Colors.grey
                     ),
                   ),
                   Align(
                     alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.grey,
-                    ),
+                      child: Icon(Icons.arrow_forward_ios, color: Colors.grey,),
                   )
                 ],
               ),

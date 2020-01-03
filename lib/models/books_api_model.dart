@@ -1,28 +1,25 @@
 class BooksApiModel {
   String _kind;
   int _totalItems;
-  List<Books> _items;
+  List<Book> _items;
 
-  BooksApiModel({String kind, int totalItems, List<Books> items}) {
+  BooksApiModel({String kind, int totalItems, List<Book> items}) {
     this._kind = kind;
     this._totalItems = totalItems;
     this._items = items;
   }
 
   String get kind => _kind;
-  set kind(String kind) => _kind = kind;
   int get totalItems => _totalItems;
-  set totalItems(int totalItems) => _totalItems = totalItems;
-  List<Books> get items => _items;
-  set items(List<Books> items) => _items = items;
+  List<Book> get items => _items;
 
   BooksApiModel.fromJson(Map<String, dynamic> json) {
     _kind = json['kind'];
     _totalItems = json['totalItems'];
     if (json['items'] != null) {
-      _items = new List<Books>();
+      _items = new List<Book>();
       json['items'].forEach((v) {
-        _items.add(new Books.fromJson(v));
+        _items.add(new Book.fromJson(v));
       });
     }
   }
@@ -38,7 +35,7 @@ class BooksApiModel {
   }
 }
 
-class Books {
+class Book {
   String _kind;
   String _id;
   String _etag;
@@ -48,15 +45,15 @@ class Books {
   AccessInfo _accessInfo;
   SearchInfo _searchInfo;
 
-  Books(
+  Book(
       {String kind,
-      String id,
-      String etag,
-      String selfLink,
-      VolumeInfo volumeInfo,
-      SaleInfo saleInfo,
-      AccessInfo accessInfo,
-      SearchInfo searchInfo}) {
+        String id,
+        String etag,
+        String selfLink,
+        VolumeInfo volumeInfo,
+        SaleInfo saleInfo,
+        AccessInfo accessInfo,
+        SearchInfo searchInfo}) {
     this._kind = kind;
     this._id = id;
     this._etag = etag;
@@ -68,23 +65,15 @@ class Books {
   }
 
   String get kind => _kind;
-  set kind(String kind) => _kind = kind;
   String get id => _id;
-  set id(String id) => _id = id;
   String get etag => _etag;
-  set etag(String etag) => _etag = etag;
   String get selfLink => _selfLink;
-  set selfLink(String selfLink) => _selfLink = selfLink;
   VolumeInfo get volumeInfo => _volumeInfo;
-  set volumeInfo(VolumeInfo volumeInfo) => _volumeInfo = volumeInfo;
   SaleInfo get saleInfo => _saleInfo;
-  set saleInfo(SaleInfo saleInfo) => _saleInfo = saleInfo;
   AccessInfo get accessInfo => _accessInfo;
-  set accessInfo(AccessInfo accessInfo) => _accessInfo = accessInfo;
   SearchInfo get searchInfo => _searchInfo;
-  set searchInfo(SearchInfo searchInfo) => _searchInfo = searchInfo;
 
-  Books.fromJson(Map<String, dynamic> json) {
+  Book.fromJson(Map<String, dynamic> json) {
     _kind = json['kind'];
     _id = json['id'];
     _etag = json['etag'];
@@ -134,7 +123,7 @@ class VolumeInfo {
   ReadingModes _readingModes;
   int _pageCount;
   String _printType;
-  int _averageRating;
+  double _averageRating;
   int _ratingsCount;
   String _maturityRating;
   bool _allowAnonLogging;
@@ -147,23 +136,23 @@ class VolumeInfo {
 
   VolumeInfo(
       {String title,
-      List<String> authors,
-      String publisher,
-      String description,
-      List<IndustryIdentifiers> industryIdentifiers,
-      ReadingModes readingModes,
-      int pageCount,
-      String printType,
-      int averageRating,
-      int ratingsCount,
-      String maturityRating,
-      bool allowAnonLogging,
-      String contentVersion,
-      ImageLinks imageLinks,
-      String language,
-      String previewLink,
-      String infoLink,
-      String canonicalVolumeLink}) {
+        List<String> authors,
+        String publisher,
+        String description,
+        List<IndustryIdentifiers> industryIdentifiers,
+        ReadingModes readingModes,
+        int pageCount,
+        String printType,
+        double averageRating,
+        int ratingsCount,
+        String maturityRating,
+        bool allowAnonLogging,
+        String contentVersion,
+        ImageLinks imageLinks,
+        String language,
+        String previewLink,
+        String infoLink,
+        String canonicalVolumeLink}) {
     this._title = title;
     this._authors = authors;
     this._publisher = publisher;
@@ -185,44 +174,22 @@ class VolumeInfo {
   }
 
   String get title => _title;
-  set title(String title) => _title = title;
   List<String> get authors => _authors;
-  set authors(List<String> authors) => _authors = authors;
   String get publisher => _publisher;
-  set publisher(String publisher) => _publisher = publisher;
   String get description => _description;
-  set description(String description) => _description = description;
-  List<IndustryIdentifiers> get industryIdentifiers => _industryIdentifiers;
-  set industryIdentifiers(List<IndustryIdentifiers> industryIdentifiers) =>
-      _industryIdentifiers = industryIdentifiers;
   ReadingModes get readingModes => _readingModes;
-  set readingModes(ReadingModes readingModes) => _readingModes = readingModes;
   int get pageCount => _pageCount;
-  set pageCount(int pageCount) => _pageCount = pageCount;
   String get printType => _printType;
-  set printType(String printType) => _printType = printType;
-  int get averageRating => _averageRating;
-  set averageRating(int averageRating) => _averageRating = averageRating;
+  double get averageRating => _averageRating;
   int get ratingsCount => _ratingsCount;
-  set ratingsCount(int ratingsCount) => _ratingsCount = ratingsCount;
   String get maturityRating => _maturityRating;
-  set maturityRating(String maturityRating) => _maturityRating = maturityRating;
   bool get allowAnonLogging => _allowAnonLogging;
-  set allowAnonLogging(bool allowAnonLogging) =>
-      _allowAnonLogging = allowAnonLogging;
   String get contentVersion => _contentVersion;
-  set contentVersion(String contentVersion) => _contentVersion = contentVersion;
   ImageLinks get imageLinks => _imageLinks;
-  set imageLinks(ImageLinks imageLinks) => _imageLinks = imageLinks;
   String get language => _language;
-  set language(String language) => _language = language;
   String get previewLink => _previewLink;
-  set previewLink(String previewLink) => _previewLink = previewLink;
   String get infoLink => _infoLink;
-  set infoLink(String infoLink) => _infoLink = infoLink;
   String get canonicalVolumeLink => _canonicalVolumeLink;
-  set canonicalVolumeLink(String canonicalVolumeLink) =>
-      _canonicalVolumeLink = canonicalVolumeLink;
 
   VolumeInfo.fromJson(Map<String, dynamic> json) {
     _title = json['title'];
@@ -295,9 +262,7 @@ class IndustryIdentifiers {
   }
 
   String get type => _type;
-  set type(String type) => _type = type;
   String get identifier => _identifier;
-  set identifier(String identifier) => _identifier = identifier;
 
   IndustryIdentifiers.fromJson(Map<String, dynamic> json) {
     _type = json['type'];
@@ -322,9 +287,7 @@ class ReadingModes {
   }
 
   bool get text => _text;
-  set text(bool text) => _text = text;
   bool get image => _image;
-  set image(bool image) => _image = image;
 
   ReadingModes.fromJson(Map<String, dynamic> json) {
     _text = json['text'];
@@ -349,9 +312,7 @@ class ImageLinks {
   }
 
   String get smallThumbnail => _smallThumbnail;
-  set smallThumbnail(String smallThumbnail) => _smallThumbnail = smallThumbnail;
   String get thumbnail => _thumbnail;
-  set thumbnail(String thumbnail) => _thumbnail = thumbnail;
 
   ImageLinks.fromJson(Map<String, dynamic> json) {
     _smallThumbnail = json['smallThumbnail'];
@@ -378,11 +339,8 @@ class SaleInfo {
   }
 
   String get country => _country;
-  set country(String country) => _country = country;
   String get saleability => _saleability;
-  set saleability(String saleability) => _saleability = saleability;
   bool get isEbook => _isEbook;
-  set isEbook(bool isEbook) => _isEbook = isEbook;
 
   SaleInfo.fromJson(Map<String, dynamic> json) {
     _country = json['country'];
@@ -413,15 +371,15 @@ class AccessInfo {
 
   AccessInfo(
       {String country,
-      String viewability,
-      bool embeddable,
-      bool publicDomain,
-      String textToSpeechPermission,
-      Epub epub,
-      Pdf pdf,
-      String webReaderLink,
-      String accessViewStatus,
-      bool quoteSharingAllowed}) {
+        String viewability,
+        bool embeddable,
+        bool publicDomain,
+        String textToSpeechPermission,
+        Epub epub,
+        Pdf pdf,
+        String webReaderLink,
+        String accessViewStatus,
+        bool quoteSharingAllowed}) {
     this._country = country;
     this._viewability = viewability;
     this._embeddable = embeddable;
@@ -435,28 +393,15 @@ class AccessInfo {
   }
 
   String get country => _country;
-  set country(String country) => _country = country;
   String get viewability => _viewability;
-  set viewability(String viewability) => _viewability = viewability;
   bool get embeddable => _embeddable;
-  set embeddable(bool embeddable) => _embeddable = embeddable;
   bool get publicDomain => _publicDomain;
-  set publicDomain(bool publicDomain) => _publicDomain = publicDomain;
   String get textToSpeechPermission => _textToSpeechPermission;
-  set textToSpeechPermission(String textToSpeechPermission) =>
-      _textToSpeechPermission = textToSpeechPermission;
   Epub get epub => _epub;
-  set epub(Epub epub) => _epub = epub;
   Pdf get pdf => _pdf;
-  set pdf(Pdf pdf) => _pdf = pdf;
   String get webReaderLink => _webReaderLink;
-  set webReaderLink(String webReaderLink) => _webReaderLink = webReaderLink;
   String get accessViewStatus => _accessViewStatus;
-  set accessViewStatus(String accessViewStatus) =>
-      _accessViewStatus = accessViewStatus;
   bool get quoteSharingAllowed => _quoteSharingAllowed;
-  set quoteSharingAllowed(bool quoteSharingAllowed) =>
-      _quoteSharingAllowed = quoteSharingAllowed;
 
   AccessInfo.fromJson(Map<String, dynamic> json) {
     _country = json['country'];
@@ -499,7 +444,6 @@ class Epub {
   }
 
   bool get isAvailable => _isAvailable;
-  set isAvailable(bool isAvailable) => _isAvailable = isAvailable;
 
   Epub.fromJson(Map<String, dynamic> json) {
     _isAvailable = json['isAvailable'];
@@ -520,7 +464,6 @@ class Pdf {
   }
 
   bool get isAvailable => _isAvailable;
-  set isAvailable(bool isAvailable) => _isAvailable = isAvailable;
 
   Pdf.fromJson(Map<String, dynamic> json) {
     _isAvailable = json['isAvailable'];
@@ -541,7 +484,6 @@ class SearchInfo {
   }
 
   String get textSnippet => _textSnippet;
-  set textSnippet(String textSnippet) => _textSnippet = textSnippet;
 
   SearchInfo.fromJson(Map<String, dynamic> json) {
     _textSnippet = json['textSnippet'];
