@@ -10,4 +10,4 @@ App for viewing and reading books using Flutter and the BLoC standard for projec
 ![](./image/preview.jpg)
 
 ## App
-![](./image/Screenshot_1578014619.png)
+<img src="./image/Screenshot_1578014619.png" width="270" height="480">
